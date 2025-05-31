@@ -1,11 +1,23 @@
 ---
-import { pages } from "@data/pages";
+import { pages } from '@data/pages'
 ---
 
 <nav>
-  <div>Massimiliano Bellan</div>{
-    pages.map(({ name, url }) => {
-      return <a href={url}>{name}</a>;
-    })
-  }<div></div>
+  <div>Massimiliano Bellan</div>
+  <div>
+    {
+      pages.map(({ name, url }) => {
+        return <a href={url}>{name}</a>
+      })
+    }
+  </div>
 </nav>
+
+<style>
+  nav {
+    outline: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+</style>
