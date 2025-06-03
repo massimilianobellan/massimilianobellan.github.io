@@ -1,23 +1,61 @@
 ---
 import { pages } from '@data/pages'
+const name = 'MASSIMILIANO'
+const letters = name.split('')
 ---
 
 <nav>
-  <div>Massimiliano Bellan</div>
-  <div>
+  <div class="title">
     {
-      pages.map(({ name, url }) => {
-        return <a href={url}>{name}</a>
-      })
+      letters.map((letter, index) => (
+        <span class="letter" style={`animation-delay: -${index % 3}s;`}>
+          {letter}
+        </span>
+      ))
+    }
+  </div>
+  <div class="links">
+    {
+      pages.map(({ name, url }) => (
+        <a href={url} class="link">
+          {name}
+        </a>
+      ))
     }
   </div>
 </nav>
 
 <style>
   nav {
-    outline: 1px solid black;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+  }
+
+  .title {
+    display: flex;
+    gap: 0.2rem;
+  }
+
+  .letter {
+    font-size: 1.5rem;
+    font-variation-settings: 'wght' 700;
+    display: inline-block;
+    animation: floatUpRight 3s cubic-bezier(1, 0, 0, 1) infinite alternate;
+  }
+
+  @keyframes floatUpRight {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(0.2rem, -0.2rem);
+    }
+  }
+
+  .links {
+    display: flex;
+    gap: 1rem;
   }
 </style>
