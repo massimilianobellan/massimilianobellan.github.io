@@ -17,6 +17,10 @@
   --primary: var(--red);
   --secondary: var(--blue);
 
+  --primary20: rgba(from var(--primary) r g b / 0.2);
+  --primary50: rgba(from var(--primary) r g b / 0.5);
+  --primary80: rgba(from var(--primary) r g b / 0.8);
+
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 1024px;

@@ -14,7 +14,7 @@ export const pages: Pages = [
     url: '/about'
   },
   {
-    name: 'Portfolio',
-    url: '/portfolio'
+    name: 'Projects',
+    url: '/projects'
   }
 ]
