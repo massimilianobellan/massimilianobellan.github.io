@@ -1,3 +1,3 @@
 # Website
 
-This is the repository for [massimiliano.dev](https://massimiliano.dev), built with [Astro](https://astro.build).
+This is the repository for [massimilianobellan.dev](https://massimilianobellan.dev), built with [Astro](https://astro.build).
