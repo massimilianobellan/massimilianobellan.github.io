@@ -1,5 +1,5 @@
 type Page = {
-  name: string;
+  name: string
   url: `/${string}`
 }
 type Pages = Page[]
@@ -7,6 +7,10 @@ type Pages = Page[]
 export const pages: Pages = [
   {
     name: 'Home',
-    url: '/'
+    url: '/',
+  },
+  {
+    name: 'Doodlelot',
+    url: '/doodlelot',
   },
 ]
