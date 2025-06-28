@@ -1,0 +1,8 @@
+.handDrawnBox {
+  width: 200px;
+  height: 100px;
+  background: transparent;
+  position: relative;
+  border: 2px solid var(--secondary);
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+}

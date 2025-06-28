@@ -1,4 +1,5 @@
 import { createStrictStash } from '@massimilianobellan/stash/react'
+import { v4 as uuidv4 } from 'uuid'
 
 export type DoodlelotShape = {
   id: string
@@ -12,7 +13,7 @@ export type DoodlelotShape = {
 type DoodlelotStash = {
   shapes: DoodlelotShape[]
   selected: string | null
-  addShape: (newShape: DoodlelotShape) => void
+  addShape: (newShape: Omit<DoodlelotShape, 'id'>) => void
   removeShape: (shapeId: string) => void
   selectShape: (shapeId: string | null) => void
 }
@@ -22,8 +23,9 @@ const [useDoodleStash, DoodleStashContext] = createStrictStash<DoodlelotStash>(
     shapes: [],
     selected: null,
     addShape: (newShape) => {
+      const shapeWithUuid: DoodlelotShape = { ...newShape, id: uuidv4() }
       set(({ shapes }) => {
-        return { shapes: [...shapes, newShape] }
+        return { shapes: [...shapes, shapeWithUuid] }
       })
     },
     removeShape: (shapeId) => {

@@ -1,0 +1,8 @@
+.canvas {
+  height: 90%;
+  width: 90vw;
+  border: 1px solid var(--secondary);
+  border-radius: 1rem;
+  position: relative;
+  overflow: hidden;
+}
