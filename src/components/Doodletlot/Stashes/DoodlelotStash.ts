@@ -27,15 +27,18 @@ type Doodle = DoodlelotShape | DoodlelotText
 
 type DoodlelotStash = {
   doodles: Array<Doodle>
+  preview: DoodlelotShape | null
   selected: string | null
   addDoodle: (newShape: Omit<DoodlelotShape, 'id'>) => void
   removeDoodle: (doodleId: string) => void
+  setPreview: (doodle: DoodlelotShape | null) => void
   selectDoodle: (doodleId: string | null) => void
 }
 
 const [useDoodleStash, DoodleStashContext] = createStrictStash<DoodlelotStash>(
   (set) => ({
     doodles: [],
+    preview: null,
     selected: null,
     addDoodle: (newDoodle) => {
       const doodleWithUuid: DoodlelotShape = { ...newDoodle, id: uuidv4() }
@@ -48,10 +51,11 @@ const [useDoodleStash, DoodleStashContext] = createStrictStash<DoodlelotStash>(
         return { doodles: doodles.filter(({ id }) => id !== doodleId) }
       })
     },
+    setPreview: (doodle) => {
+      set(() => ({ preview: doodle }))
+    },
     selectDoodle: (doodleId) => {
-      set(() => {
-        return { selected: doodleId }
-      })
+      set(() => ({ selected: doodleId }))
     },
   })
 )
@@ -106,6 +110,10 @@ export function useDoodleById(doodleId: string) {
   )
 }
 
+export function usePreviewDoodle() {
+  return useDoodleStash(({ preview }) => preview)
+}
+
 export function useSelectedDoodle(doodleId: string) {
   return useDoodleStash(({ selected }) => selected === doodleId)
 }
@@ -116,6 +124,10 @@ export function useAddDoodle() {
 
 export function useRemoveDoodle() {
   return useDoodleStash(({ removeDoodle }) => removeDoodle)
+}
+
+export function useSetPreviewDoodle() {
+  return useDoodleStash(({ setPreview }) => setPreview)
 }
 
 export function useSelectDoodle() {
