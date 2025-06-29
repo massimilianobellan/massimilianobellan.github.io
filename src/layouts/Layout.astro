@@ -1,8 +1,8 @@
 ---
 import '@styles/cssResets.css'
 import '@styles/global.css'
-import Navbar from 'src/components/Navbar.astro'
 import Footer from 'src/components/Footer.astro'
+import Navbar from 'src/components/Navbar.astro'
 ---
 
 <!doctype html>
@@ -13,6 +13,8 @@ import Footer from 'src/components/Footer.astro'
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>Massimiliano Bellan</title>
+    <script is:inline src="https://unpkg.com/react-scan/dist/auto.global.js">
+    </script>
   </head>
   <body>
     <Navbar />

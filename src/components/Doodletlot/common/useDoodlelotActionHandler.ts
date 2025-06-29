@@ -92,7 +92,7 @@ export function useDoodlelotClickHandler() {
       case 'type-text':
         break
     }
-  }, [action.type, selectShape])
+  }, [selectShape])
 
   return { onClickCallback }
 }
