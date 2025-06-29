@@ -1,28 +1,23 @@
-import { useRef, type MouseEvent } from 'react'
+import { useRef } from 'react'
+import { useDoodlelotMouseHandler } from '../common/useDoodlelotActionHandler'
 import { DoodlelotBar } from '../DoodlelotBar/DoodlelotBar'
 import { DoodlelotShape } from '../DoodlelotShape/DoodlelotShape'
-import {
-  useDoodlelotAddShape,
-  useDoodlelotShapes,
-} from '../Stashes/DoodlelotStash'
+import { useDoodles } from '../Stashes/DoodlelotStash'
 import styles from './DoodlelotCanvas.module.css'
 
 export function DoodlelotCanvas() {
   const canvasRef = useRef<HTMLDivElement>(null)
-  const shapes = useDoodlelotShapes()
-  const addShape = useDoodlelotAddShape()
-
-  function handleClick(event: MouseEvent<HTMLDivElement>) {
-    if (!canvasRef.current) return
-    const rect = canvasRef.current.getBoundingClientRect()
-    const x = event.clientX - rect.left
-    const y = event.clientY - rect.top
-    addShape({ type: 'rectangle', coordinates: { x, y } })
-  }
+  const { onMouseUp, onMouseDown } = useDoodlelotMouseHandler(canvasRef)
+  const shapes = useDoodles()
 
   return (
     <>
-      <div className={styles.canvas} onClick={handleClick} ref={canvasRef}>
+      <div
+        className={styles.canvas}
+        ref={canvasRef}
+        onMouseDown={onMouseDown}
+        onMouseUp={onMouseUp}
+      >
         <DoodlelotBar />
         {shapes.map(({ id }) => {
           return <DoodlelotShape key={id} id={id} />
